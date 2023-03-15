@@ -3,4 +3,7 @@
     <string name="txtStrAlo">Hello World!</string>
     <string name="strBtnGoToTela1">Go to Tela1</string>
     <string name="strBtnVoltar">Back</string>
+    <string name="btnGoTo3">PRÓXIMA</string>
+    <string name="btnVoltar3">BACK</string>
+    <string name="btnVoltarInicio">Voltar ao Início</string>
 </resources>
