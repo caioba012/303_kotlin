@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.TextView
+import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import org.w3c.dom.Text
 
@@ -16,13 +17,24 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val launcher = registerForActivityResult(
-            ActivityResultContracts.StartActivityForResult()) { result ->
+            ActivityResultContracts.StartActivityForResult()) { result: ActivityResult ->
             Log.d("Teste", "Retorno")
             Log.d("Teste", result.resultCode.toString())
+            var msg: String = " "
+
             if (result.resultCode == Activity.RESULT_OK){
-                val data: Intent? = result.data
+                result.data?.let{
+                    if(it.hasExtra("param1")){
+                        msg = msg + " " + it.getIntExtra("param1", 0).toString()
+                    }
+                    if(it.hasExtra("param2")){
+                        msg = msg + " " + it.getStringExtra("param2").toString()
+                    }
+                }
+
+                //val bundle: Bundle? = result.data?.extras
+                //var msg = bundle?.get("ActivityResult").toString()
                 val txt = findViewById(R.id.textView) as TextView
-                val msg = data?.getStringExtra("ActivityResult")
                 txt.setText(msg)
 
             }
