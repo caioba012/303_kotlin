@@ -19,6 +19,8 @@ class MainActivity : AppCompatActivity() {
         )
     }
 
+
+
     private fun hasPermission(context: Context, permissions: Array<String>):
             Boolean = permissions.all{
                 ActivityCompat.checkSelfPermission(context, it) ==
